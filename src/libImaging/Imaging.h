@@ -292,6 +292,13 @@ ImagingError_ValueError(const char *message);
 #define IMAGING_TRANSFORM_MKS2013 6
 #define IMAGING_TRANSFORM_MKS2021 7
 
+/* mirrors PIL.Image.Dither (ORDERED and RASTERIZE are not yet implemented) */
+typedef enum {
+    IMAGING_DITHER_NONE = 0,
+    IMAGING_DITHER_FLOYDSTEINBERG = 3,  // Default
+    IMAGING_DITHER_ATKINSON = 4,
+} ImagingDitherType;
+
 typedef int (*ImagingTransformMap)(double *X, double *Y, int x, int y, void *data);
 typedef int (*ImagingTransformFilter)(void *out, Imaging im, double x, double y);
 
