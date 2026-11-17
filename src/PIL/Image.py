@@ -1234,11 +1234,12 @@ class Image:
         if dither is None:
             dither = Dither.FLOYDSTEINBERG
 
+        im = self.im
         if dither == Dither.ATKINSON and mode == "1" and self.mode in {"P", "PA"}:
             im = im.convert("L")
 
         try:
-            im = self.im.convert(mode, dither)
+            im = im.convert(mode, dither)
         except ValueError:
             try:
                 # normalize source image and try again
